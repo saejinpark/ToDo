@@ -7,20 +7,39 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EF6DE1202C849EB7002C38A0 /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6DE11F2C849EB7002C38A0 /* SampleData.swift */; };
+		EF6DE1232C84A268002C38A0 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EF6DE1212C84A268002C38A0 /* Localizable.strings */; };
+		EF838F282C71D5FC0091999F /* ToDoDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF838F272C71D5FC0091999F /* ToDoDetail.swift */; };
+		EF838F2C2C71F6D00091999F /* Step.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF838F2B2C71F6D00091999F /* Step.swift */; };
 		EFB60B412C71729400C392B6 /* ToDoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB60B402C71729400C392B6 /* ToDoApp.swift */; };
-		EFB60B432C71729400C392B6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB60B422C71729400C392B6 /* ContentView.swift */; };
-		EFB60B452C71729400C392B6 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB60B442C71729400C392B6 /* Item.swift */; };
 		EFB60B472C71729500C392B6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EFB60B462C71729500C392B6 /* Assets.xcassets */; };
 		EFB60B4A2C71729500C392B6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EFB60B492C71729500C392B6 /* Preview Assets.xcassets */; };
+		EFB60B522C7172BD00C392B6 /* Tab.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB60B512C7172BD00C392B6 /* Tab.swift */; };
+		EFB60B552C7173A100C392B6 /* ToDo.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB60B542C7173A100C392B6 /* ToDo.swift */; };
+		EFB60B592C71755200C392B6 /* ToDoList.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB60B582C71755200C392B6 /* ToDoList.swift */; };
+		EFB60B622C717EC500C392B6 /* DoneList.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB60B612C717EC500C392B6 /* DoneList.swift */; };
+		EFB60B642C717ED900C392B6 /* DoingList.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB60B632C717ED900C392B6 /* DoingList.swift */; };
+		EFB60B662C7188F500C392B6 /* ToDoSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB60B652C7188F500C392B6 /* ToDoSheet.swift */; };
+		EFB60B682C718D2B00C392B6 /* StepEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFB60B672C718D2B00C392B6 /* StepEditor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EF6DE11F2C849EB7002C38A0 /* SampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
+		EF6DE1222C84A268002C38A0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		EF6DE1242C84A26E002C38A0 /* ko */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ko; path = ko.lproj/Localizable.strings; sourceTree = "<group>"; };
+		EF838F272C71D5FC0091999F /* ToDoDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoDetail.swift; sourceTree = "<group>"; };
+		EF838F2B2C71F6D00091999F /* Step.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Step.swift; sourceTree = "<group>"; };
 		EFB60B3D2C71729400C392B6 /* ToDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ToDo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EFB60B402C71729400C392B6 /* ToDoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoApp.swift; sourceTree = "<group>"; };
-		EFB60B422C71729400C392B6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		EFB60B442C71729400C392B6 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		EFB60B462C71729500C392B6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EFB60B492C71729500C392B6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		EFB60B512C7172BD00C392B6 /* Tab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab.swift; sourceTree = "<group>"; };
+		EFB60B542C7173A100C392B6 /* ToDo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDo.swift; sourceTree = "<group>"; };
+		EFB60B582C71755200C392B6 /* ToDoList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoList.swift; sourceTree = "<group>"; };
+		EFB60B612C717EC500C392B6 /* DoneList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneList.swift; sourceTree = "<group>"; };
+		EFB60B632C717ED900C392B6 /* DoingList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoingList.swift; sourceTree = "<group>"; };
+		EFB60B652C7188F500C392B6 /* ToDoSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoSheet.swift; sourceTree = "<group>"; };
+		EFB60B672C718D2B00C392B6 /* StepEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepEditor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +56,7 @@
 		EFB60B342C71729400C392B6 = {
 			isa = PBXGroup;
 			children = (
+				EF6DE1212C84A268002C38A0 /* Localizable.strings */,
 				EFB60B3F2C71729400C392B6 /* ToDo */,
 				EFB60B3E2C71729400C392B6 /* Products */,
 			);
@@ -53,9 +73,10 @@
 		EFB60B3F2C71729400C392B6 /* ToDo */ = {
 			isa = PBXGroup;
 			children = (
+				EFB60B562C71750000C392B6 /* View */,
+				EFB60B532C71738600C392B6 /* Model */,
+				EFB60B502C7172A400C392B6 /* Enum */,
 				EFB60B402C71729400C392B6 /* ToDoApp.swift */,
-				EFB60B422C71729400C392B6 /* ContentView.swift */,
-				EFB60B442C71729400C392B6 /* Item.swift */,
 				EFB60B462C71729500C392B6 /* Assets.xcassets */,
 				EFB60B482C71729500C392B6 /* Preview Content */,
 			);
@@ -68,6 +89,61 @@
 				EFB60B492C71729500C392B6 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		EFB60B502C7172A400C392B6 /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				EFB60B512C7172BD00C392B6 /* Tab.swift */,
+			);
+			path = Enum;
+			sourceTree = "<group>";
+		};
+		EFB60B532C71738600C392B6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EFB60B542C7173A100C392B6 /* ToDo.swift */,
+				EF838F2B2C71F6D00091999F /* Step.swift */,
+				EF6DE11F2C849EB7002C38A0 /* SampleData.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		EFB60B562C71750000C392B6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				EFB60B672C718D2B00C392B6 /* StepEditor.swift */,
+				EF838F272C71D5FC0091999F /* ToDoDetail.swift */,
+				EFB60B652C7188F500C392B6 /* ToDoSheet.swift */,
+				EFB60B572C71750B00C392B6 /* ToDo */,
+				EFB60B5F2C717EA300C392B6 /* Doing */,
+				EFB60B602C717EB100C392B6 /* Done */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		EFB60B572C71750B00C392B6 /* ToDo */ = {
+			isa = PBXGroup;
+			children = (
+				EFB60B582C71755200C392B6 /* ToDoList.swift */,
+			);
+			path = ToDo;
+			sourceTree = "<group>";
+		};
+		EFB60B5F2C717EA300C392B6 /* Doing */ = {
+			isa = PBXGroup;
+			children = (
+				EFB60B632C717ED900C392B6 /* DoingList.swift */,
+			);
+			path = Doing;
+			sourceTree = "<group>";
+		};
+		EFB60B602C717EB100C392B6 /* Done */ = {
+			isa = PBXGroup;
+			children = (
+				EFB60B612C717EC500C392B6 /* DoneList.swift */,
+			);
+			path = Done;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -112,6 +188,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ko,
 			);
 			mainGroup = EFB60B342C71729400C392B6;
 			productRefGroup = EFB60B3E2C71729400C392B6 /* Products */;
@@ -129,6 +206,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EFB60B4A2C71729500C392B6 /* Preview Assets.xcassets in Resources */,
+				EF6DE1232C84A268002C38A0 /* Localizable.strings in Resources */,
 				EFB60B472C71729500C392B6 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -140,13 +218,33 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EFB60B432C71729400C392B6 /* ContentView.swift in Sources */,
-				EFB60B452C71729400C392B6 /* Item.swift in Sources */,
+				EF838F2C2C71F6D00091999F /* Step.swift in Sources */,
+				EFB60B642C717ED900C392B6 /* DoingList.swift in Sources */,
+				EFB60B682C718D2B00C392B6 /* StepEditor.swift in Sources */,
+				EFB60B552C7173A100C392B6 /* ToDo.swift in Sources */,
+				EFB60B622C717EC500C392B6 /* DoneList.swift in Sources */,
+				EFB60B592C71755200C392B6 /* ToDoList.swift in Sources */,
+				EFB60B522C7172BD00C392B6 /* Tab.swift in Sources */,
 				EFB60B412C71729400C392B6 /* ToDoApp.swift in Sources */,
+				EF6DE1202C849EB7002C38A0 /* SampleData.swift in Sources */,
+				EF838F282C71D5FC0091999F /* ToDoDetail.swift in Sources */,
+				EFB60B662C7188F500C392B6 /* ToDoSheet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		EF6DE1212C84A268002C38A0 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EF6DE1222C84A268002C38A0 /* en */,
+				EF6DE1242C84A26E002C38A0 /* ko */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		EFB60B4B2C71729500C392B6 /* Debug */ = {
@@ -201,7 +299,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -258,7 +356,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -279,6 +377,8 @@
 				DEVELOPMENT_TEAM = G2NKCUA8N7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = ToDo;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -289,7 +389,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = name.geppetto.ToDo;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.geppetto.ToDo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -308,6 +408,8 @@
 				DEVELOPMENT_TEAM = G2NKCUA8N7;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = ToDo;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -318,7 +420,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = name.geppetto.ToDo;
+				PRODUCT_BUNDLE_IDENTIFIER = dev.geppetto.ToDo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
