@@ -16,19 +16,30 @@ final class ToDo {
     }
     
     static let sampleData = [
-        ToDo(title: "밥먹기", steps: [
+        ToDo(title: "기상", steps: [
+            Step(isCompleted: true),
+            Step(isCompleted: true),
             Step()
         ]),
         ToDo(title: "밥먹기", steps: [
+            Step(),
+            Step(),
             Step()
         ]),
-        ToDo(title: "밥먹기", steps: [
+        ToDo(title: "씻기", steps: [
+            Step(),
+            Step(),
             Step()
         ]),
-        ToDo(title: "밥먹기", steps: [
+        ToDo(title: "준비하기", steps: [
+            Step(),
+            Step(),
             Step()
         ]),
-        ToDo(title: "밥먹기", steps: [
+        ToDo(title: "출근하기", steps: [
+            Step(),
+            Step(),
+            Step(),
             Step()
         ])
     ]

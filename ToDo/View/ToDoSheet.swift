@@ -60,8 +60,6 @@ struct ToDoSheet: View {
                     }
                 }
             }
-            .navigationTitle(isNew ? "New" : toDo.title)
-            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .confirmationAction) {
                     Button("Done") {

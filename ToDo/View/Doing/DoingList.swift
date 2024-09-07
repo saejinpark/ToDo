@@ -35,19 +35,7 @@ struct DoingList: View {
                     NavigationLink {
                         ToDoDetail(toDo: toDo)
                     } label: {
-                        Text(toDo.title)
-                    }
-                    .swipeActions(edge: .trailing) {
-                        Button {
-                            deleteItems(indexSet: IndexSet(integer: filteredToDos.firstIndex(of: toDo)!))
-                        } label: {
-                            Label("Delete", systemImage: "trash.fill")
-                        }.tint(.red)
-                        Button {
-                            selectedToDo = toDo
-                        } label: {
-                            Label("Edit",systemImage: "rectangle.and.pencil.and.ellipsis")
-                        }.tint(.blue)
+                        ToDoRow(toDo: toDo)
                     }
                 }.onDelete(perform: deleteItems)
                 if filteredToDos.isEmpty {
