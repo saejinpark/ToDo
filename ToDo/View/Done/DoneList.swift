@@ -48,6 +48,13 @@ struct DoneList: View {
                         } label: {
                             Label("Edit",systemImage: "rectangle.and.pencil.and.ellipsis")
                         }.tint(.blue)
+                        Button {
+                            for step in toDo.steps {
+                                step.isCompleted = false
+                            }
+                        } label: {
+                            Label("Reload",systemImage: "arrow.3.trianglepath")
+                        }.tint(.gray)
                     }
                 }.onDelete(perform: deleteItems)
                 if filteredToDos.isEmpty {
