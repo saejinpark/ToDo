@@ -1,8 +1,21 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "%lld" : {
-
+    "%lld / %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld of %2$lld"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%2$lld 중의 %1$lld 번째"
+          }
+        }
+      }
     },
     "Add" : {
       "localizations" : {
@@ -32,6 +45,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "취소"
+          }
+        }
+      }
+    },
+    "Category" : {
+      "localizations" : {
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "카테고리"
           }
         }
       }
@@ -149,8 +172,37 @@
         }
       }
     },
+    "notSelected" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "not selected"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "선택되지 않음"
+          }
+        }
+      }
+    },
     "Progress" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Progress"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "진행도"
+          }
+        }
+      }
     },
     "Reload" : {
       "localizations" : {
@@ -228,6 +280,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "할 일"
+          }
+        }
+      }
+    },
+    "ToDoNotFound" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ToDo not found"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "할 일을 찾을 수 없습니다."
           }
         }
       }

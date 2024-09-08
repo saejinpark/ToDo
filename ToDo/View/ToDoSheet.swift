@@ -27,7 +27,14 @@ struct ToDoSheet: View {
             List {
                 Section("Title") {
                     TextField("EnterTitle", text: $toDo.title)
+                        .font(.headline)
+                        .padding(4)
                 }
+                Picker("Category", selection: $toDo.category) {
+                    ForEach(ToDo.Category.allCases) { category in
+                        Label(category.rawValue, systemImage: category.systemImage)
+                            .tag(category)                    }
+                }.pickerStyle(.navigationLink)
                 Section("Steps") {
                     let idxAndOrderArr = toDo.steps.enumerated().map { index, element in IdxAndOrder(index: index, order: element.order)}
                     let sortedIdxOrderArr = idxAndOrderArr.sorted { left, right in left.order < right.order}

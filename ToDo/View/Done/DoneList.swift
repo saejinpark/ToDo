@@ -11,10 +11,9 @@ import SwiftData
 struct DoneList: View {
     @Environment(\.modelContext) private var modelContext
     @Query(sort: \ToDo.creatAt) private var toDos: [ToDo]
-    
-    @State private var selectedToDo: ToDo?
-    @State private var isNew = false
     @State private var searchText = ""
+    
+    @State var selectedToDo: ToDo?
     
     var filteredToDos: [ToDo] {
         let clearToDos = toDos.filter(isDone)
@@ -29,47 +28,38 @@ struct DoneList: View {
     }
     
     var body: some View {
-        NavigationStack {
-            List {
-                ForEach(filteredToDos) { toDo in
-                    NavigationLink {
-                        ToDoDetail(toDo: toDo)
+        NavigationSplitView {
+            List(filteredToDos) { toDo in
+                NavigationLink {
+                    ToDoDetail(toDo: toDo)
+                } label: {
+                    Label(toDo.title, systemImage: toDo.category.systemImage)
+                        .font(.headline)
+                }
+                .swipeActions(edge: .trailing, allowsFullSwipe: false) {
+                    Button {
+                        for step in toDo.steps {
+                            step.isCompleted = false
+                        }
                     } label: {
-                        Text(toDo.title)
-                    }
-                    .swipeActions(edge: .trailing) {
-                        Button {
-                            deleteItems(indexSet: IndexSet(integer: filteredToDos.firstIndex(of: toDo)!))
-                        } label: {
-                            Label("Delete", systemImage: "trash.fill")
-                        }.tint(.red)
-                        Button {
-                            selectedToDo = toDo
-                        } label: {
-                            Label("Edit",systemImage: "rectangle.and.pencil.and.ellipsis")
-                        }.tint(.blue)
-                        Button {
-                            for step in toDo.steps {
-                                step.isCompleted = false
-                            }
-                        } label: {
-                            Label("Reload",systemImage: "arrow.3.trianglepath")
-                        }.tint(.gray)
-                    }
-                }.onDelete(perform: deleteItems)
+                        Label("Reload",systemImage: "arrow.3.trianglepath")
+                    }.tint(.gray)
+                }
+            }
+            .navigationTitle("Done")
+            .searchable(text: $searchText, prompt: "SearchTodos")
+            .interactiveDismissDisabled(true)
+            .overlay {
                 if filteredToDos.isEmpty {
                     ContentUnavailableView(label: {
                         Label("EmptyToDoList", systemImage: "tray.fill")
                     })
                 }
             }
-            .navigationTitle("Done")
-            .searchable(text: $searchText, prompt: "SearchTodos")
-
-            .sheet(item: $selectedToDo) { toDo in
-                ToDoSheet(toDo: toDo, isNew: $isNew)
-            }
-            .interactiveDismissDisabled(true)
+        } detail: {
+            ContentUnavailableView(label: {
+                Label("notSelected", systemImage: "square.dashed")
+            })
         }
     }
     
@@ -82,22 +72,6 @@ struct DoneList: View {
         return true
     }
     
-    private func addToDo() {
-        withAnimation {
-            let newItem = ToDo(title: "")
-            isNew = true
-            modelContext.insert(newItem)
-            selectedToDo = newItem
-        }
-    }
-    
-    private func deleteItems(indexSet: IndexSet) {
-        withAnimation {
-            for index in indexSet {
-                modelContext.delete(filteredToDos[index])
-            }
-        }
-    }
 }
 
 #Preview {

@@ -11,9 +11,6 @@ import SwiftData
 struct DoingList: View {
     @Environment(\.modelContext) private var modelContext
     @Query(sort: \ToDo.creatAt) private var toDos: [ToDo]
-    
-    @State private var selectedToDo: ToDo?
-    @State private var isNew = false
     @State private var searchText = ""
     
     var filteredToDos: [ToDo] {
@@ -29,27 +26,28 @@ struct DoingList: View {
     }
     
     var body: some View {
-        NavigationStack {
-            List {
-                ForEach(filteredToDos) { toDo in
-                    NavigationLink {
-                        ToDoDetail(toDo: toDo)
-                    } label: {
-                        ToDoRow(toDo: toDo)
-                    }
-                }.onDelete(perform: deleteItems)
+        NavigationSplitView {
+            List(filteredToDos) {toDo in
+                NavigationLink {
+                    ToDoDetail(toDo: toDo)
+                } label: {
+                    DoingRow(toDo: toDo)
+                }
+            }
+            .navigationTitle("Doing")
+            .searchable(text: $searchText,  prompt: "SearchTodos")
+            .interactiveDismissDisabled(true)
+            .overlay {
                 if filteredToDos.isEmpty {
                     ContentUnavailableView(label: {
                         Label("EmptyToDoList", systemImage: "tray.fill")
                     })
                 }
             }
-            .navigationTitle("Doing")
-            .searchable(text: $searchText, prompt: "SearchTodos")
-            .sheet(item: $selectedToDo) { toDo in
-                ToDoSheet(toDo: toDo, isNew: $isNew)
-            }
-            .interactiveDismissDisabled(true)
+        } detail: {
+            ContentUnavailableView(label: {
+                Label("notSelected", systemImage: "square.dashed")
+            })
         }
     }
     
@@ -66,24 +64,9 @@ struct DoingList: View {
         return hasUnCompleted && hasCompleted
     }
     
-    private func addToDo() {
-        withAnimation {
-            let newItem = ToDo(title: "")
-            isNew = true
-            modelContext.insert(newItem)
-            selectedToDo = newItem
-        }
-    }
-    
-    private func deleteItems(indexSet: IndexSet) {
-        withAnimation {
-            for index in indexSet {
-                modelContext.delete(filteredToDos[index])
-            }
-        }
-    }
 }
 
 #Preview {
     DoingList()
+        .modelContainer(SampleData.shared.modelContainer)
 }

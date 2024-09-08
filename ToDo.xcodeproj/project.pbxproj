@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		EF078F752C8C894700C79D06 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = EF078F742C8C894700C79D06 /* Localizable.xcstrings */; };
-		EF078F772C8C8BF100C79D06 /* ToDoRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF078F762C8C8BF100C79D06 /* ToDoRow.swift */; };
+		EF078F772C8C8BF100C79D06 /* DoingRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF078F762C8C8BF100C79D06 /* DoingRow.swift */; };
 		EF078F792C8C8F1E00C79D06 /* SeparatedGuage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF078F782C8C8F1E00C79D06 /* SeparatedGuage.swift */; };
 		EF6DE1202C849EB7002C38A0 /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF6DE11F2C849EB7002C38A0 /* SampleData.swift */; };
 		EF838F282C71D5FC0091999F /* ToDoDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF838F272C71D5FC0091999F /* ToDoDetail.swift */; };
@@ -27,7 +27,7 @@
 
 /* Begin PBXFileReference section */
 		EF078F742C8C894700C79D06 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
-		EF078F762C8C8BF100C79D06 /* ToDoRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoRow.swift; sourceTree = "<group>"; };
+		EF078F762C8C8BF100C79D06 /* DoingRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoingRow.swift; sourceTree = "<group>"; };
 		EF078F782C8C8F1E00C79D06 /* SeparatedGuage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatedGuage.swift; sourceTree = "<group>"; };
 		EF6DE11F2C849EB7002C38A0 /* SampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
 		EF838F272C71D5FC0091999F /* ToDoDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToDoDetail.swift; sourceTree = "<group>"; };
@@ -137,7 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				EFB60B632C717ED900C392B6 /* DoingList.swift */,
-				EF078F762C8C8BF100C79D06 /* ToDoRow.swift */,
+				EF078F762C8C8BF100C79D06 /* DoingRow.swift */,
 				EF078F782C8C8F1E00C79D06 /* SeparatedGuage.swift */,
 			);
 			path = Doing;
@@ -230,7 +230,7 @@
 				EFB60B552C7173A100C392B6 /* ToDo.swift in Sources */,
 				EFB60B622C717EC500C392B6 /* DoneList.swift in Sources */,
 				EFB60B592C71755200C392B6 /* ToDoList.swift in Sources */,
-				EF078F772C8C8BF100C79D06 /* ToDoRow.swift in Sources */,
+				EF078F772C8C8BF100C79D06 /* DoingRow.swift in Sources */,
 				EFB60B522C7172BD00C392B6 /* Tab.swift in Sources */,
 				EFB60B412C71729400C392B6 /* ToDoApp.swift in Sources */,
 				EF6DE1202C849EB7002C38A0 /* SampleData.swift in Sources */,
