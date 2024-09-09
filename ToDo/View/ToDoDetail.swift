@@ -3,6 +3,8 @@ import SwiftData
 
 struct ToDoDetail: View {
     let toDo: ToDo
+    let activeTab: Tab
+    let editFunc: (() -> Void)?
     
     @Environment(\.modelContext) private var modelContext
     @Query(sort: \ToDo.creatAt) private var toDos: [ToDo]
@@ -10,6 +12,11 @@ struct ToDoDetail: View {
     @State private var multiSelection = Set<UUID>()
     @State private var isEditing = true
     
+    init(toDo: ToDo, activeTab: Tab, editFunc: (() -> Void)? = nil) {
+        self.toDo = toDo
+        self.activeTab = activeTab
+        self.editFunc = editFunc
+    }
     
     var body: some View {
         Group {
@@ -19,6 +26,39 @@ struct ToDoDetail: View {
                 }
                 .listStyle(.plain)
                 .navigationTitle(toDo.title)
+                #if os(macOS)
+                    .toolbar {
+                        ToolbarItemGroup {
+                            if activeTab == .done {
+                                Button {
+                                    for step in toDo.steps {
+                                        step.isCompleted = false
+                                    }
+                                } label: {
+                                    Label("Reload",systemImage: "arrow.3.trianglepath")
+                                        .foregroundColor(.gray)
+                                }
+                            }
+                            if activeTab == .toDo {
+                                if let editFunc = editFunc {
+                                    Button {
+                                        editFunc()
+                                    } label: {
+                                        Label("Edit",systemImage: "rectangle.and.pencil.and.ellipsis")
+                                            .foregroundColor(.blue)
+                                    }
+                                }
+                                
+                                Button {
+                                    modelContext.delete(toDo)
+                                } label: {
+                                    Label("Delete", systemImage: "trash.fill")
+                                        .foregroundColor(.red)
+                                }
+                            }
+                        }
+                    }
+                #endif
                 .onChange(of: multiSelection) { _, newValue in
                     toDo.steps.forEach { step in
                         step.isCompleted = newValue.contains(step.id)

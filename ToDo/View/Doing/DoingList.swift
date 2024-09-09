@@ -27,11 +27,20 @@ struct DoingList: View {
     
     var body: some View {
         NavigationSplitView {
-            List(filteredToDos) {toDo in
-                NavigationLink {
-                    ToDoDetail(toDo: toDo)
-                } label: {
-                    DoingRow(toDo: toDo)
+            List {
+                ForEach(filteredToDos) {toDo in
+                    NavigationLink {
+                        ToDoDetail(toDo: toDo, activeTab: .doing)
+                    } label: {
+                        DoingRow(toDo: toDo)
+                    }
+                }
+                if filteredToDos.isEmpty {
+                    ContentUnavailableView(label: {
+                        Label("notSelected", systemImage: "square.dashed")
+                    })
+                    .frame(width: 0, height: 0)
+                    .accessibilityHidden(/*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
                 }
             }
             .navigationTitle("Doing")

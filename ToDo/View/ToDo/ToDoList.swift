@@ -5,10 +5,10 @@ struct ToDoList: View {
     @Environment(\.modelContext) private var modelContext
     @Query(sort: \ToDo.creatAt) private var toDos: [ToDo]
     
-    @State private var newToDo: ToDo?
+    @State private var selectedToDo: ToDo?
     @State private var isNew = false
     @State private var searchText = ""
-
+    
     var filteredToDos: [ToDo] {
         let clearToDos = toDos.filter(isToDo)
         
@@ -23,31 +23,39 @@ struct ToDoList: View {
     
     var body: some View {
         NavigationSplitView {
-            List(filteredToDos) { toDo in
-                NavigationLink {
-                    ToDoDetail(toDo: toDo)
-                } label: {
-                    Label(toDo.title, systemImage: toDo.category.systemImage)
-                        .font(.headline)
-                }
-                .swipeActions(edge: .trailing, allowsFullSwipe: false) {
-                    Button {
-                        deleteItems(indexSet: IndexSet(integer: filteredToDos.firstIndex(of: toDo)!))
+            List {
+                ForEach(filteredToDos) { toDo in
+                    NavigationLink {
+                        ToDoDetail(toDo: toDo, activeTab: .toDo, editFunc: { selectedToDo = toDo })
                     } label: {
-                        Label("Delete", systemImage: "trash.fill")
-                    }.tint(.red)
-
-                    Button {
-                        newToDo = toDo
-                    } label: {
-                        Label("Edit",systemImage: "rectangle.and.pencil.and.ellipsis")
-                    }.tint(.blue)
+                        Label(toDo.title, systemImage: toDo.category.systemImage)
+                            .font(.headline)
+                    }
+                    #if os(iOS)
+                    .swipeActions(edge: .trailing, allowsFullSwipe: false) {
+                        Button {
+                            deleteItems(indexSet: IndexSet(integer: filteredToDos.firstIndex(of: toDo)!))
+                        } label: {
+                            Label("Delete", systemImage: "trash.fill")
+                        }.tint(.red)
+                        
+                        Button {
+                            selectedToDo = toDo
+                        } label: {
+                            Label("Edit",systemImage: "rectangle.and.pencil.and.ellipsis")
+                        }.tint(.blue)
+                    }
+                    #endif
+                    
                 }
                 if filteredToDos.isEmpty {
                     ContentUnavailableView(label: {
                         Label("EmptyToDoList", systemImage: "tray.fill")
                     })
+                    .frame(width: 0, height: 0)
+                    .accessibilityHidden(/*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
                 }
+                
             }
             .navigationTitle("ToDo")
             .searchable(text: $searchText, prompt: "SearchTodos")
@@ -60,7 +68,7 @@ struct ToDoList: View {
                     }
                 }
             }
-            .sheet(item: $newToDo) { toDo in
+            .sheet(item: $selectedToDo) { toDo in
                 ToDoSheet(toDo: toDo, isNew: $isNew)
                     .interactiveDismissDisabled(true)
             }
@@ -80,7 +88,7 @@ struct ToDoList: View {
             cleanupLegacyData()
         }
     }
-    
+
     private func isToDo(toDo: ToDo) -> Bool {
         for step in toDo.steps {
             if step.isCompleted {
@@ -89,16 +97,16 @@ struct ToDoList: View {
         }
         return true
     }
-    
+
     private func addToDo() {
         withAnimation {
             let newItem = ToDo(title: "")
             isNew = true
             modelContext.insert(newItem)
-            newToDo = newItem
+            selectedToDo = newItem
         }
     }
-    
+
     private func deleteItems(indexSet: IndexSet) {
         withAnimation {
             for index in indexSet {
@@ -106,7 +114,7 @@ struct ToDoList: View {
             }
         }
     }
-    
+
     private func cleanupLegacyData() {
         let legacyToDos = toDos.filter { $0.title.isEmpty || $0.steps.isEmpty }
         for toDo in legacyToDos {
@@ -115,7 +123,6 @@ struct ToDoList: View {
         try? modelContext.save()
     }
 }
-
 
 #Preview {
     ToDoList()

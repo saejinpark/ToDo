@@ -29,21 +29,32 @@ struct DoneList: View {
     
     var body: some View {
         NavigationSplitView {
-            List(filteredToDos) { toDo in
-                NavigationLink {
-                    ToDoDetail(toDo: toDo)
-                } label: {
-                    Label(toDo.title, systemImage: toDo.category.systemImage)
-                        .font(.headline)
-                }
-                .swipeActions(edge: .trailing, allowsFullSwipe: false) {
-                    Button {
-                        for step in toDo.steps {
-                            step.isCompleted = false
-                        }
+            List{
+                ForEach(filteredToDos) { toDo in
+                    NavigationLink {
+                        ToDoDetail(toDo: toDo, activeTab: .done)
                     } label: {
-                        Label("Reload",systemImage: "arrow.3.trianglepath")
-                    }.tint(.gray)
+                        Label(toDo.title, systemImage: toDo.category.systemImage)
+                            .font(.headline)
+                    }
+                    #if os(iOS)
+                    .swipeActions(edge: .trailing, allowsFullSwipe: false) {
+                        Button {
+                            for step in toDo.steps {
+                                step.isCompleted = false
+                            }
+                        } label: {
+                            Label("Reload",systemImage: "arrow.3.trianglepath")
+                        }.tint(.gray)
+                    }
+                    #endif
+                }
+                if filteredToDos.isEmpty {
+                    ContentUnavailableView(label: {
+                        Label("EmptyToDoList", systemImage: "tray.fill")
+                    })
+                    .frame(width: 0, height: 0)
+                    .accessibilityHidden(/*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
                 }
             }
             .navigationTitle("Done")
