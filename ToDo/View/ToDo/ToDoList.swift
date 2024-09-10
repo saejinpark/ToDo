@@ -59,7 +59,7 @@ struct ToDoList: View {
                 
             }
             .navigationTitle("ToDo")
-            .searchable(text: $searchText, prompt: "SearchTodos")
+            .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always), prompt: "SearchTodos")
             .toolbar {
                 ToolbarItem {
                     Button(action: addToDo) {

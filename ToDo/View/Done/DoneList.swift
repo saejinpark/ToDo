@@ -59,7 +59,7 @@ struct DoneList: View {
                 }
             }
             .navigationTitle("Done")
-            .searchable(text: $searchText, prompt: "SearchTodos")
+            .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always), prompt: "SearchTodos")
             .interactiveDismissDisabled(true)
             .overlay {
                 if filteredToDos.isEmpty {
