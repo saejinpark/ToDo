@@ -9,7 +9,7 @@ class Step {
     var isCompleted: Bool
     var toDo: ToDo?
     
-    init(id: UUID = UUID(), order: Int = 0, desc: String = "new STEP", isCompleted: Bool = false) {
+    init(id: UUID = UUID(), order: Int = 0, desc: String = "---", isCompleted: Bool = false) {
         self.id = id
         self.order = order
         self.desc = desc

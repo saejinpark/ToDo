@@ -55,6 +55,7 @@ struct DoneList: View {
                     })
                     .frame(width: 0, height: 0)
                     .accessibilityHidden(/*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
+                    .listRowBackground(Color(UIColor.systemGray6))
                 }
             }
             .navigationTitle("Done")
