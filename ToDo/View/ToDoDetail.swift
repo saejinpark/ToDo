@@ -7,6 +7,8 @@ struct ToDoDetail: View {
     let editFunc: (() -> Void)?
     
     @Environment(\.modelContext) private var modelContext
+    @Environment(\.presentationMode) var presentationMode
+    
     @Query(sort: \ToDo.creatAt) private var toDos: [ToDo]
     
     @State private var multiSelection = Set<UUID>()
@@ -26,39 +28,36 @@ struct ToDoDetail: View {
                 }
                 .listStyle(.plain)
                 .navigationTitle(toDo.title)
-                #if os(macOS)
-                    .toolbar {
-                        ToolbarItemGroup {
-                            if activeTab == .done {
+                .toolbar {
+                    ToolbarItemGroup {
+                        if activeTab == .done {
+                            Button {
+                                presentationMode.wrappedValue.dismiss()
+                                for step in toDo.steps {
+                                    step.isCompleted = false
+                                }
+                            } label: {
+                                Label("Reload",systemImage: "arrow.3.trianglepath")
+                            }
+                        }
+                        if activeTab == .toDo {
+                            if let editFunc = editFunc {
                                 Button {
-                                    for step in toDo.steps {
-                                        step.isCompleted = false
-                                    }
+                                    editFunc()
                                 } label: {
-                                    Label("Reload",systemImage: "arrow.3.trianglepath")
-                                        .foregroundColor(.gray)
+                                    Label("Edit",systemImage: "rectangle.and.pencil.and.ellipsis")
                                 }
                             }
-                            if activeTab == .toDo {
-                                if let editFunc = editFunc {
-                                    Button {
-                                        editFunc()
-                                    } label: {
-                                        Label("Edit",systemImage: "rectangle.and.pencil.and.ellipsis")
-                                            .foregroundColor(.blue)
-                                    }
-                                }
-                                
-                                Button {
-                                    modelContext.delete(toDo)
-                                } label: {
-                                    Label("Delete", systemImage: "trash.fill")
-                                        .foregroundColor(.red)
-                                }
+                            
+                            Button {
+                                modelContext.delete(toDo)
+                                presentationMode.wrappedValue.dismiss()
+                            } label: {
+                                Label("Delete", systemImage: "trash.fill")
                             }
                         }
                     }
-                #endif
+                }
                 .onChange(of: multiSelection) { _, newValue in
                     toDo.steps.forEach { step in
                         step.isCompleted = newValue.contains(step.id)

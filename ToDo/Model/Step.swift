@@ -3,7 +3,7 @@ import SwiftData
 
 @Model
 class Step {
-    let id: UUID
+    var id: UUID
     var order: Int
     var desc: String
     var isCompleted: Bool

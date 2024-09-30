@@ -2,12 +2,13 @@ import SwiftUI
 import SwiftData
 
 struct ToDoList: View {
-    @Environment(\.modelContext) private var modelContext
     @Query(sort: \ToDo.creatAt) private var toDos: [ToDo]
     
     @State private var selectedToDo: ToDo?
     @State private var isNew = false
     @State private var searchText = ""
+
+    @Environment(\.modelContext) private var modelContext
     
     var filteredToDos: [ToDo] {
         let clearToDos = toDos.filter(isToDo)
@@ -31,32 +32,7 @@ struct ToDoList: View {
                         Label(toDo.title, systemImage: toDo.category.systemImage)
                             .font(.headline)
                     }
-                    #if os(iOS)
-                    .swipeActions(edge: .trailing, allowsFullSwipe: false) {
-                        Button {
-                            deleteItems(indexSet: IndexSet(integer: filteredToDos.firstIndex(of: toDo)!))
-                        } label: {
-                            Label("Delete", systemImage: "trash.fill")
-                        }.tint(.red)
-                        
-                        Button {
-                            selectedToDo = toDo
-                        } label: {
-                            Label("Edit",systemImage: "rectangle.and.pencil.and.ellipsis")
-                        }.tint(.blue)
-                    }
-                    #endif
-                    
                 }
-                if filteredToDos.isEmpty {
-                    ContentUnavailableView(label: {
-                        Label("EmptyToDoList", systemImage: "tray.fill")
-                    })
-                    .frame(width: 0, height: 0)
-                    .accessibilityHidden(/*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
-                    .listRowBackground(Color(UIColor.systemGroupedBackground))
-                }
-                
             }
             .navigationTitle("ToDo")
             .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always), prompt: "SearchTodos")

@@ -4,7 +4,7 @@ import SwiftData
 
 @Model
 final class ToDo {
-    let id: UUID
+    var id: UUID
     var title: String
     var category: Category
     var creatAt: Date
@@ -31,21 +31,6 @@ final class ToDo {
         case projects = "Projects"
         
         var id: String { self.rawValue }
-        
-        var color: Color {
-            switch self {
-            case .work: return .blue
-            case .personal: return .green
-            case .health: return .red
-            case .finance: return .purple
-            case .education: return .orange
-            case .home: return .yellow
-            case .shopping: return .pink
-            case .social: return .teal
-            case .errands: return .gray
-            case .projects: return .indigo
-            }
-        }
         
         var systemImage: String {
             switch self {

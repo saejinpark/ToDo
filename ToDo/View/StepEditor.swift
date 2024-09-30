@@ -2,14 +2,14 @@ import SwiftUI
 
 struct StepEditor: View {
     @Binding var step: Step
-    @State var temp = ""
     @FocusState private var isFocused: Bool
     
+    @Environment(\.modelContext) private var modelContext
     @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         Group {
-            TextEditor(text: $temp)
+            TextEditor(text: $step.desc)
                 .focused($isFocused)
                 .padding()
         }
@@ -17,18 +17,15 @@ struct StepEditor: View {
         .toolbar {
             ToolbarItem {
                 Button {
-                    step.desc = temp
                     presentationMode.wrappedValue.dismiss()
+                    modelContext.delete(step)
                 } label: {
-                    Text("Done")
+                    Label("Delete",systemImage: "trash.fill")
                 }
             }
         }
         .onTapGesture {
             isFocused = false
-        }
-        .onAppear {
-            temp = step.desc
         }
     }
 }

@@ -35,14 +35,6 @@ struct DoingList: View {
                         DoingRow(toDo: toDo)
                     }
                 }
-                if filteredToDos.isEmpty {
-                    ContentUnavailableView(label: {
-                        Label("notSelected", systemImage: "square.dashed")
-                    })
-                    .frame(width: 0, height: 0)
-                    .accessibilityHidden(/*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/)
-                    .listRowBackground(Color(UIColor.systemGroupedBackground))
-                }
             }
             .navigationTitle("Doing")
             .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .always), prompt: "SearchTodos")

@@ -10,11 +10,8 @@ import SwiftData
 
 struct DoingRowStyle: LabeledContentStyle {
     func makeBody(configuration: Configuration) -> some View {
-        VStack {
-            HStack {
-                configuration.label
-                Spacer()
-            }
+        HStack {
+            configuration.label
             configuration.content
         }
     }
@@ -33,12 +30,11 @@ struct DoingRow: View {
     var body: some View {
         Group {
             if let toDo = currentToDo {
-
                 let limit = toDo.steps.count
                 let value = toDo.steps.filter{ $0.isCompleted }.count
                 
                 LabeledContent{
-                    SeparatedGuage(limit: limit, value: value, color: toDo.category.color)
+                    SeparatedGuage(limit: limit, value: value)
                 } label: {
                     Label(toDo.title, systemImage: toDo.category.systemImage)
                         .font(.headline)

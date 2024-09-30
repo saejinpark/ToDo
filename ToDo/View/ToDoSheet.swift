@@ -45,13 +45,6 @@ struct ToDoSheet: View {
                             } label: {
                                 Text(toDo.steps[idxAndOrder.index].desc)
                             }
-                            .swipeActions(edge: .trailing) {
-                                Button(role: .destructive) {
-                                    deleteContent(at: idxAndOrder.index)
-                                } label: {
-                                    Label("Delete", systemImage: "trash")
-                                }
-                            }
                         }
                     }
                     Button {
