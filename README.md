@@ -1,36 +1,47 @@
 # Daylist
 
-Apple Human Interface Guidelines를 따르는 하루 흐름 중심 할 일 앱. 의존성 없는 단일 HTML 파일(`index.html`)입니다.
+Apple Human Interface Guidelines를 따르는 하루 흐름 중심 할 일 앱. SwiftUI + SwiftData로 만든 네이티브 앱이며, iPhone · iPad · Mac · Apple Watch에서 각 플랫폼의 관용구로 동작해요.
 
 ## 구조
 
 - **오늘** — 오전 · 오후 · 저녁 · 시간 미정 구간으로 나뉜 오늘 할 일과 진행률 링. 기한이 지난 항목은 맨 위에 모여요.
-- **받은함** — 날짜 없이 빠르게 적어두는 곳. 오른쪽으로 밀면 오늘로 옮겨요.
+- **받은함** — 날짜 없이 빠르게 적어두는 곳. 오른쪽으로 밀면 오늘로 옮겨요. 미래 날짜 항목은 아래 "예정"에 모여요.
 - **기록** — 완료한 일을 날짜별 타임라인으로. 오늘 · 최근 7일 · 연속 일수.
 
-## 플랫폼 관용구
+## 플랫폼
 
-화면 폭과 포인터 종류로 자동 선택돼요. 넓은 화면에서는 아래 **자동 · 워치 · 폰 · 패드 · 맥** 바로 기기 프레임 안에서 미리 볼 수 있어요.
-
-| 관용구 | 조건 | 특징 |
+| 플랫폼 | 타깃 | 모습 |
 | --- | --- | --- |
-| 워치 | ≤ 260pt | 항상 다크, 카드 행, 페이지 점, 큰 버튼 목록 |
-| 폰 | < 768pt | 49pt 탭 바, 큰 제목, 바텀 시트, 스와이프 · 길게 누르기 |
-| 패드 | ≥ 768pt 터치 | 사이드바 + 가운데 본문, 창 형태 시트, 컨텍스트 메뉴 |
-| 맥 | ≥ 1000pt 포인터 | 13pt 글자, 소스 리스트, 툴바, 호버, 우클릭 메뉴, 인스펙터, ⌘N · ⌘1·2·3 |
+| iPhone | `Daylist` | 탭 바, 큰 제목, 바텀 시트, 스와이프 · 길게 누르기 |
+| iPad | `Daylist` | 사이드바로 전환 가능한 탭 바(`sidebarAdaptable`), 폼 시트, 컨텍스트 메뉴 |
+| Mac | `Daylist` | 사이드바 + 툴바, 우클릭 메뉴, ⌘N 새 할 일, ⌘1 · ⌘2 · ⌘3 화면 이동 |
+| Apple Watch | `DaylistWatch` | 세로 페이지 3장(오늘 · 받은함 · 기록), 행을 누르면 큰 버튼 목록 |
 
 ## 조작
 
-- 체크 원 탭 → 완료 (기록 탭으로 이동)
-- 오른쪽 스와이프 → 오늘 탭에서는 **내일로**, 받은함에서는 **오늘로**
-- 왼쪽 스와이프 → 삭제 (실행 취소 가능)
-- 길게 누르기 / 우클릭 → 컨텍스트 메뉴
-- `#today` `#inbox` `#history` 해시로 특정 탭을 바로 열 수 있어요
+- 체크 원 탭 → 완료 (기록으로 이동)
+- 앞쪽 스와이프 → 오늘 화면에서는 **내일로**, 받은함 · 지난 항목에서는 **오늘로**
+- 뒤쪽 스와이프 → 삭제
+- 길게 누르기 / 우클릭 → 컨텍스트 메뉴 (오늘로 · 내일로 · 받은함으로 · 완료 · 세부사항 · 삭제)
+- 각 구간 아래 "추가" 행에서 바로 입력, Enter로 계속 추가
 
-## 저장
+## 프로젝트
 
-브라우저의 `localStorage`에 저장돼요. claude.ai 아티팩트로 열면 계정별 비공개 저장소를 대신 사용해요.
+```
+Daylist.xcodeproj
+Daylist/          iOS · iPadOS · macOS 앱 (RootView, TodayView, InboxView, HistoryView, TaskEditor)
+DaylistWatch/     watchOS 앱
+Shared/           두 타깃이 함께 쓰는 모델 · 날짜 도우미 · 공용 뷰
+```
 
-## 실행
+- 배포 타깃: iOS 18 · macOS 15 · watchOS 11
+- 저장: SwiftData 로컬 저장소. 기기 간 동기화는 아직 없어요 (CloudKit을 붙이면 돼요).
+- 첫 실행에는 예시 할 일이 들어 있고, "비우고 시작"으로 지울 수 있어요.
 
-`index.html`을 브라우저에서 열면 돼요. 외부 의존성이나 빌드 단계는 없어요.
+## 빌드
+
+```bash
+xcodebuild -project Daylist.xcodeproj -scheme Daylist -destination 'platform=iOS Simulator,name=iPhone 16' build
+```
+
+Xcode에서 `Daylist.xcodeproj`를 열고 `Daylist` 또는 `DaylistWatch` 스킴을 골라 실행하면 돼요.
